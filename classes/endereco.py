@@ -32,3 +32,6 @@ class Endereco:
         self._bairro = bairro
         self._cidade = cidade
         self._cep = cep
+
+    def __repr__(self):
+        return f'{self._rua}, {self._numero} - {self.bairro}, {self._cidade} - {self._cep}'

@@ -1,12 +1,13 @@
 from datetime import date
 
+
 class Aluno:
-    def __init__(self, id_aluno, nome_aluno, curso_aluno, periodo_aluno, nasc_aluno, endereco_aluno):
+    def __init__(self, id_aluno, nome_aluno, nasc_aluno, periodo_aluno, curso_aluno, endereco_aluno):
         self._id_aluno = id_aluno
         self._nome_aluno = nome_aluno
+        self._nasc_aluno = nasc_aluno
         self._curso_aluno = curso_aluno
         self._periodo_aluno = periodo_aluno
-        self._nasc_aluno = nasc_aluno
         self._endereco_aluno = endereco_aluno
         self.lista_disciplinas = []
 
@@ -40,7 +41,27 @@ class Aluno:
     def remove_disciplina(self, disciplina):
         self.lista_disciplinas.remove(disciplina)
 
+    def separa_data(self):
+        separado = self._nasc_aluno.split('/')
+        return separado
+
     def get_idade(self):
         ano_atual = date.today()
-        return ano_atual.year - self._nasc_aluno - ((ano_atual.month, ano_atual.day) <(self._nasc_aluno.month, self._nasc_aluno.day))
-    
+        ano_separado = self.separa_data()
+        ano = ano_separado[2]
+        mes = ano_separado[1]
+        dia = ano_separado[0]
+        ano_nascimento = date(int(ano), int(mes), int(dia))
+        idade = ano_atual.year - ano_nascimento.year - (
+                    (ano_atual.month, ano_atual.day) < (ano_nascimento.month, ano_nascimento.day))
+        return idade
+
+
+    def get_informacao(self):
+        print(f'\tid_aluno: {self._id_aluno}'
+              f'\n\tnome: {self._nome_aluno}'
+              f'\n\tidade: {self.get_idade()}'
+              f'\n\tcurso: {self._curso_aluno}'
+              f'\n\tperiodo: {self._periodo_aluno}'
+              f'\n\tENDERECO:'
+              f'\n\t{self._endereco_aluno}')
