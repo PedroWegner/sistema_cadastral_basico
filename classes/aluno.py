@@ -9,7 +9,7 @@ class Aluno:
         self._curso_aluno = curso_aluno
         self._periodo_aluno = periodo_aluno
         self._endereco_aluno = endereco_aluno
-        self.lista_disciplinas = []
+        self._lista_disciplinas = []
 
     @property
     def id_aluno(self):
@@ -36,10 +36,10 @@ class Aluno:
         return self._endereco_aluno
 
     def add_disciplina(self, disciplina):
-        self.lista_disciplinas.append(disciplina)
+        self._lista_disciplinas.append(disciplina)
 
     def remove_disciplina(self, disciplina):
-        self.lista_disciplinas.remove(disciplina)
+        self._lista_disciplinas.remove(disciplina)
 
     def separa_data(self):
         separado = self._nasc_aluno.split('/')
@@ -53,9 +53,19 @@ class Aluno:
         dia = ano_separado[0]
         ano_nascimento = date(int(ano), int(mes), int(dia))
         idade = ano_atual.year - ano_nascimento.year - (
-                    (ano_atual.month, ano_atual.day) < (ano_nascimento.month, ano_nascimento.day))
+                (ano_atual.month, ano_atual.day) < (ano_nascimento.month, ano_nascimento.day))
         return idade
 
+    def get_nome_id(self):
+        print(f'\tid_aluno: {self._id_aluno} - nome: {self._nome_aluno}')
+
+    def get_disciplinas(self):
+        self.get_nome_id()
+        if not self._lista_disciplinas:
+            print("\tNão há disciplinas cadastradas")
+            return
+        for disciplina in self._lista_disciplinas:
+            print(f'\t{disciplina}')
 
     def get_informacao(self):
         print(f'\tid_aluno: {self._id_aluno}'

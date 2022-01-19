@@ -15,3 +15,6 @@ class Disciplina:
     @property
     def credito_disc(self):
         return self._credito_disc
+
+    def __repr__(self):
+        return f'{self._nome_disc}, {self.horario_disc} - total de créditos: {self._credito_disc}'
