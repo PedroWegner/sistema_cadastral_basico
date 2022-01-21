@@ -15,9 +15,9 @@ def show_menu():
           '\n\t3 - descadastrar um aluno'
           '\n\t4 - descadastrar disciplina de um aluno'
           '\n\t5 - atualizar cadastro de aluno'
-          '\n\t60 - exibir alunos e disciplinas'
-          '\n\t50 - mostrar alunos'
-          '\n\t100 - sair')
+          '\n\t6 - exibir alunos e disciplinas'
+          '\n\t7 - mostrar alunos'
+          '\n\t00 - sair')
     op = input('digite uma operação: ')
     menu(op)
 
@@ -31,13 +31,13 @@ def menu(op):
         descadastrar_aluno()
     elif op == '4':
         descadastrar_disciplina()
-    elif op == '60':
-        show_aluno_disciplina()
     elif op == '5':
         update_aluno()
-    elif op == '50':
+    elif op == '6':
+        show_aluno_disciplina()
+    elif op == '7':
         show_alunos()
-    elif op == '100':
+    elif op == '00':
         print('saindo...')
         exit()
     else:
