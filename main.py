@@ -27,6 +27,10 @@ def menu(op):
         cadastrar_aluno()
     elif op == '2':
         cadastra_disciplina()
+    elif op == '3':
+        descadastrar_aluno()
+    elif op == '4':
+        descadastrar_disciplina()
     elif op == '60':
         show_aluno_disciplina()
     elif op == '5':
@@ -55,6 +59,9 @@ def cadastrar_aluno():
     aluno = Aluno(next(id_aluno), nome, nascimento, curso, periodo, Endereco(rua, numero, bairro, cidade, cep))
     lista_aluno.append(aluno)
 
+def descadastrar_aluno():
+    aluno_aux = get_aluno()
+    lista_aluno.remove(aluno_aux)
 
 def show_alunos():
     if not lista_aluno:
@@ -69,10 +76,19 @@ def cadastra_disciplina():
     if not aluno_aux:
         print('Não há aluno cadastrado com o id digitado')
         return
+    cod_disc = input('código da disciplina: ')
     nome_disc = input('disciplina: ')
     hora_disc = input('horario: ')
     cred_disc = input('creditos: ')
-    aluno_aux.add_disciplina(Disciplina(nome_disc, hora_disc, cred_disc))
+    aluno_aux.add_disciplina(Disciplina(cod_disc, nome_disc, hora_disc, cred_disc))
+
+def descadastrar_disciplina():
+    aluno_aux = get_aluno()
+    print(f'Disciplinas do aluno {aluno_aux.nome_aluno}')
+    aluno_aux.get_disciplinas()
+    cod_disc = input('código da disciplina: ')
+    aluno_aux.remove_disciplina(cod_disc)
+    print('disciplina descadastrada')
 
 
 def update_aluno():

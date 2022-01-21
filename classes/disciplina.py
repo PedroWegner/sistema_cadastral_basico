@@ -1,8 +1,13 @@
 class Disciplina:
-    def __init__(self, nome_disc, horario_disc, credito_disc):
+    def __init__(self, cod_disc, nome_disc, horario_disc, credito_disc):
+        self._cod_disc = cod_disc.upper()
         self._nome_disc = nome_disc
         self._horario_disc = horario_disc
         self._credito_disc = credito_disc
+
+    @property
+    def cod_disc(self):
+        return self._cod_disc
 
     @property
     def nome_disc(self):
@@ -17,4 +22,4 @@ class Disciplina:
         return self._credito_disc
 
     def __repr__(self):
-        return f'{self._nome_disc}, {self.horario_disc} - total de créditos: {self._credito_disc}'
+        return f'código: {self._cod_disc} | {self._nome_disc}, {self.horario_disc} - total de créditos: {self._credito_disc}'

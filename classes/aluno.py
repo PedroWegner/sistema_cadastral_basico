@@ -37,7 +37,14 @@ class Aluno:
     def add_disciplina(self, disciplina):
         self._lista_disciplinas.append(disciplina)
 
-    def remove_disciplina(self, disciplina):
+    def get_disciplina_by_codigo(self, cod_disc):
+        for disciplina in self._lista_disciplinas:
+            if disciplina.cod_disc == cod_disc:
+                return disciplina
+        return False
+
+    def remove_disciplina(self, cod_disc):
+        disciplina = self.get_disciplina_by_codigo(cod_disc)
         self._lista_disciplinas.remove(disciplina)
 
     def separa_data(self):
