@@ -1,6 +1,5 @@
 from datetime import date
 
-
 class Aluno:
     def __init__(self, id_aluno, nome_aluno, nasc_aluno, periodo_aluno, curso_aluno, endereco_aluno):
         self._id_aluno = id_aluno
@@ -75,3 +74,14 @@ class Aluno:
               f'\n\tperiodo: {self._periodo_aluno}'
               f'\n\tENDERECO:'
               f'\n\t{self._endereco_aluno}')
+
+    def update_pessoal(self, nome, data_nasc):
+        self._nome_aluno = nome
+        self._nasc_aluno = data_nasc
+
+    def update_curso(self, curso, periodo):
+        self._curso_aluno = curso
+        self._periodo_aluno = periodo
+
+    def update_endereco_alu(self, rua, numero, bairro, cidade, cep):
+        self._endereco_aluno.update_endereco(rua, numero, bairro, cidade, cep)
